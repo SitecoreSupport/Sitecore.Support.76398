@@ -1,5 +1,5 @@
 # Sitecore.Support.76398
-Fixes the versions comparison issue in the CheckRevision processor
+This patch fixes the versions comparison issue in the `CheckRevision` processor.
 
 ## License  
 This patch is licensed under the [Sitecore Corporation A/S License for GitHub](https://github.com/sitecoresupport/Sitecore.Support.76398/blob/master/LICENSE).  

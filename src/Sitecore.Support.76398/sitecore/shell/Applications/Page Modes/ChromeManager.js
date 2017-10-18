@@ -38,6 +38,21 @@ Sitecore.PageModes.ChromeManager = new function() {
     elem.bind("setData", $sc.proxy(this.onFieldModified, this));
   };
 
+  // Sitecore.Support.76398
+  this.updateItemRevision = function (itemId, newRevision) {
+      itemId = decodeURI(itemId).replace(/-|{|}/g, '');
+      newRevision = newRevision.replace(/-/g, '');
+      $sc(this.fieldValuesContainer).children("input").each(function (i) {
+          var arr = $sc(this).attr("id").split("_");
+          var id = arr[1];
+          if (id === itemId) {
+              arr[5] = newRevision;
+              $sc(this).attr("id", arr.join("_"));
+              $sc(this).attr("name", arr.join("_"));
+          }
+      });
+  }
+
   this.chromes = function() {
     if (!this._chromes) {
       var chromesToLoad = new Array();

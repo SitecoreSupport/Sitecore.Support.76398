@@ -1,10 +1,8 @@
-﻿using Sitecore.Data.Items;
-using Sitecore.ExperienceEditor.Speak.Server.Contexts;
+﻿using Sitecore.ExperienceEditor.Speak.Server.Contexts;
 using Sitecore.ExperienceEditor.Speak.Server.Requests;
 using Sitecore.ExperienceEditor.Speak.Server.Responses;
-using System;
 
-namespace Sitecore.ExperienceEditor.Speak.Ribbon.Requests.LockItem
+namespace Sitecore.Support.ExperienceEditor.Speak.Ribbon.Requests.LockItem
 {
     public class ToggleLockRequest : PipelineProcessorRequest<ItemContext>
     {
@@ -17,7 +15,8 @@ namespace Sitecore.ExperienceEditor.Speak.Ribbon.Requests.LockItem
                 Value = new
                 {
                     Locked = item.Locking.IsLocked(),
-                    Version = item.Version.Number
+                    Version = item.Version.Number,
+                    Revision = item[FieldIDs.Revision]
                 }
             };
         }

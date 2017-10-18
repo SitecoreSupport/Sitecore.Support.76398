@@ -1,13 +1,9 @@
-﻿using Sitecore.Data;
-using Sitecore.Data.Items;
-using Sitecore.ExperienceEditor.Speak.Server.Contexts;
+﻿using Sitecore.ExperienceEditor.Speak.Server.Contexts;
 using Sitecore.ExperienceEditor.Speak.Server.Requests;
 using Sitecore.ExperienceEditor.Speak.Server.Responses;
-using Sitecore.Globalization;
-using Sitecore.Pipelines.Save;
 using System;
 
-namespace Sitecore.ExperienceEditor.Speak.Ribbon.Requests.SaveItem
+namespace Sitecore.Support.ExperienceEditor.Speak.Ribbon.Requests.SaveItem
 {
     public class CheckRevision : PipelineProcessorRequest<PageContext>
     {
@@ -15,7 +11,8 @@ namespace Sitecore.ExperienceEditor.Speak.Ribbon.Requests.SaveItem
         {
             Sitecore.Pipelines.Save.SaveArgs.SaveItem saveItem = base.RequestContext.GetSaveArgs().Items[0];
             PipelineProcessorResponseValue pipelineProcessorResponseValue = new PipelineProcessorResponseValue();
-            Sitecore.Data.Items.Item item = base.RequestContext.Item.Database.GetItem(saveItem.ID, Sitecore.Globalization.Language.Parse(base.RequestContext.Language), Sitecore.Data.Version.Parse(base.RequestContext.Version));
+            //Sitecore.Data.Items.Item item = base.RequestContext.Item.Database.GetItem(saveItem.ID, Sitecore.Globalization.Language.Parse(base.RequestContext.Language), Sitecore.Data.Version.Parse(base.RequestContext.Version));
+            Sitecore.Data.Items.Item item = base.RequestContext.Item.Database.GetItem(saveItem.ID, saveItem.Language, saveItem.Version);
             if (item == null)
             {
                 return pipelineProcessorResponseValue;

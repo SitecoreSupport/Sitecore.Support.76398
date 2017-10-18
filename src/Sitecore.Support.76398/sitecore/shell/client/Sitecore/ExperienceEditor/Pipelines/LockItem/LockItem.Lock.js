@@ -5,6 +5,8 @@
         }
 
         var locked = response.responseValue.value.Locked;
+        // Sitecore.Support.76398
+        window.parent.Sitecore.PageModes.ChromeManager.updateItemRevision(response.context.currentContext.itemId, response.responseValue.value.Revision);
 
         Sitecore.Commands.Lock.setButtonTitle(Sitecore.ExperienceEditor.instance, locked);
         Sitecore.ExperienceEditor.instance.currentContext.isLocked = locked;

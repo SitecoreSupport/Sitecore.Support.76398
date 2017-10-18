@@ -634,6 +634,10 @@ Sitecore.PageModes.ChromeManager = new function () {
     };
 
     this.setFieldValue = function (itemUri, fieldID, value) {
+        value = value.replace(/-,scCReturn,-/g, "\r");
+        value = value.replace(/-,scNewLine,-/g, "\n");
+        value = value.replace(/-,scTab,-/g, "\t");
+
         value = value.replace(/-,scDQuote,-/g, "\"");
         value = value.replace(/-,scSQuote,-/g, "'");
 

@@ -18,12 +18,12 @@ namespace Sitecore.Support.ExperienceEditor.Speak.Ribbon.Requests.SaveItem
                 return pipelineProcessorResponseValue;
             }
             string text = item[Sitecore.FieldIDs.Revision].Replace("-", string.Empty);
-            if (saveItem.Revision == string.Empty)
+            if (string.IsNullOrEmpty(saveItem.Revision))
             {
                 saveItem.Revision = text;
             }
             string strB = saveItem.Revision.Replace("-", string.Empty);
-            if (string.Compare(text, strB, StringComparison.InvariantCultureIgnoreCase) != 0 && string.Compare("#!#Ignore revision#!#", strB, StringComparison.InvariantCultureIgnoreCase) != 0)
+            if (string.Compare(text, strB, StringComparison.OrdinalIgnoreCase) != 0 && string.Compare("#!#Ignore revision#!#", strB, StringComparison.OrdinalIgnoreCase) != 0)
             {
                 pipelineProcessorResponseValue.ConfirmMessage = Sitecore.Globalization.Translate.Text("One or more items have been changed.\n\nDo you want to overwrite these changes?");
             }

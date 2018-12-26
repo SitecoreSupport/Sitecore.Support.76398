@@ -12,7 +12,7 @@ namespace Sitecore.Support.ExperienceEditor.Speak.Ribbon.Requests.SaveItem
             Sitecore.Pipelines.Save.SaveArgs.SaveItem saveItem = base.RequestContext.GetSaveArgs().Items[0];
             PipelineProcessorResponseValue pipelineProcessorResponseValue = new PipelineProcessorResponseValue();
             //Sitecore.Data.Items.Item item = base.RequestContext.Item.Database.GetItem(saveItem.ID, Sitecore.Globalization.Language.Parse(base.RequestContext.Language), Sitecore.Data.Version.Parse(base.RequestContext.Version));
-            Sitecore.Data.Items.Item item = base.RequestContext.Item.Database.GetItem(saveItem.ID, saveItem.Language, saveItem.Version);
+            Sitecore.Data.Items.Item item = RequestContext.Item.Database.GetItem(saveItem.ID, saveItem.Language, saveItem.Version);
             if (item == null)
             {
                 return pipelineProcessorResponseValue;
